@@ -40,4 +40,8 @@ class Scraping < ApplicationRecord
 ​
         # mechanize終了
     end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 75681ffc084797ad470fcb389b4e0ba862785add
