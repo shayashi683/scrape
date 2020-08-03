@@ -22,5 +22,3 @@ class Scraping < ApplicationRecord
     p elements.inner_text
   end
 end
-
-p test
