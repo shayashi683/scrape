@@ -11,6 +11,7 @@ class Scraping < ApplicationRecord
     pre_next_link = ""
     active_flag = 1
     page_num = 1
+    sum = 0
     while active_flag == 1 do
       current_page = agent.get(domain + next_url)
       # activeクラスがあったらフラグを立てる
@@ -31,10 +32,11 @@ class Scraping < ApplicationRecord
             active_flag = 0
           else
             # ここに対象のページでやりたい処理を書いていく
-            elements = current_page.search('li a')
+            elements = current_page.search('.rm-cv-list-content a')
                 elements.each do |ele|
-                    p ele.inner_text
+                    ele.inner_text
                 end
+              p sum = sum + elements.count
           end
           pre_next_link = next_link
         end
