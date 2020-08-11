@@ -31,7 +31,10 @@ class Scraping < ApplicationRecord
             active_flag = 0
           else
             # ここに対象のページでやりたい処理を書いていく
-            p "#{next_url}"
+            elements = current_page.search('li a')
+                elements.each do |ele|
+                    p ele.inner_text
+                end
           end
           pre_next_link = next_link
         end
@@ -39,6 +42,6 @@ class Scraping < ApplicationRecord
       default_page = default_page + page_count
       next_url = "/read0170729/published_papers?limit=20&offset=#{default_page}"
       page_num = page_num + 1
+        end
     end
-  end
 end
