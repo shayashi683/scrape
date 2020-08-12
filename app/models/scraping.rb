@@ -12,6 +12,7 @@ class Scraping < ApplicationRecord
     active_flag = 1
     page_num = 1
     sum = 0
+    array = []
     while active_flag == 1 do
       current_page = agent.get(domain + next_url)
       # activeクラスがあったらフラグを立てる
@@ -36,7 +37,7 @@ class Scraping < ApplicationRecord
                 elements.each do |ele|
                     ele.inner_text
                 end
-              p sum = sum + elements.count
+              sum = sum + elements.count
           end
           pre_next_link = next_link
         end
@@ -45,5 +46,6 @@ class Scraping < ApplicationRecord
       next_url = "/read0170729/published_papers?limit=20&offset=#{default_page}"
       page_num = page_num + 1
         end
+      p array.push(sum)
     end
 end
